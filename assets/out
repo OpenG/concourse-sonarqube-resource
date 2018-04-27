@@ -168,7 +168,7 @@ if [ -f "${scanner_report_file}" ]; then
   fi
 else
   echo "error: SonarQube report could not be located."
-  exit 1
+#  exit 1
 fi
 
 jq -n "{
