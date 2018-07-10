@@ -168,7 +168,13 @@ if [ -f "${scanner_report_file}" ]; then
   fi
 else
   echo "error: SonarQube report could not be located."
-#  exit 1
+  jq -n "{
+  version: {ce_task_id: \"mode: issues\"},
+  metadata: [
+    { name: \"Sonar_analysis_complete\", value: \"true\" }
+  ]
+}" >&3
+  exit 0
 fi
 
 jq -n "{
